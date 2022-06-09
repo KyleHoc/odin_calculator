@@ -1,3 +1,5 @@
+let entryFlag = true;
+
 let key1 = document.getElementById("one");
 key1.addEventListener('click', function(){
     input(1);
@@ -50,30 +52,30 @@ key0.addEventListener('click', function(){
 
 let keyplus = document.getElementById("plus");
 keyplus.addEventListener('click', function(){
-    input('+');
+    call('+');
 });
 
 let keyminus = document.getElementById("minus");
 keyminus.addEventListener('click', function(){
-    input('-');
+    call('-');
 });
 
 let keyX = document.getElementById("times");
 keyX.addEventListener('click', function(){
-    input('*');
+    call('*');
 });
 
 let keyDiv = document.getElementById("divide");
 keyDiv.addEventListener('click', function(){
-    input('/');
+    call('/');
 });
 
 let keyEqual = document.getElementById("equals");
 keyEqual.addEventListener('click', function(){
-    input('=');
+    equals();
 });
 
 let keyClear = document.getElementById("clear");
 keyClear.addEventListener('click', function(){
-    input('C');
+    clear();
 });

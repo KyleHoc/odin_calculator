@@ -18,35 +18,41 @@ function divide (num1, num2){
     return quot;
 }
 
-let currentNum = 0;
-let prevNum = 0;
-let temp = 0;
-let stringCopy = 0;
-let symbol = ""
-let symbolNext = "";
+let arg1 = 0;
+let arg2= 0;
+let stringCopy = '0';
+let operator = null;
+let eqOperator = null;
+
 document.getElementById("display").innerHTML = stringCopy;
 
 function input(key){
-    if(typeof key == 'string' && key == '='){
-        currentNum = operate(symbol, currentNum, prevNum);
-        stringCopy = String(currentNum);
-        document.getElementById("display").innerHTML = stringCopy;
-    } else if (typeof key == 'string'){
-        symbol = key;
-        //stringCopy = '0';
-        prevNum = currentNum;
-        currentNum = 0;
+    if(arg1 == 0){
+        arg1 = key;
+        stringCopy = String(key);
         document.getElementById("display").innerHTML = stringCopy;
     } else {
-        if(currentNum == 0){
-            currentNum = key;
-            stringCopy = String(key);
-            document.getElementById("display").innerHTML = stringCopy;
-        } else {
-            stringCopy = stringCopy + String(key);
-            currentNum = parseInt(stringCopy);
-            document.getElementById("display").innerHTML = stringCopy;
-        }
+        stringCopy = stringCopy + String(key);
+        arg1 = parseInt(stringCopy);
+        document.getElementById("display").innerHTML = stringCopy;
+    }
+}
+
+function call(sym){
+    let result = 0;
+    eqOperator = sym;
+
+    if (operator == null){
+        stringCopy = '';
+        operator = sym;
+        arg2 = arg1;
+    } else {
+        result = operate(operator, arg1, arg2);
+        document.getElementById("display").innerHTML = String(result);
+        operator = sym;
+        arg1 = arg2;
+        arg2 = result;
+        stringCopy = '';
     }
 }
 
@@ -70,12 +76,24 @@ function operate(sym, num1, num2){
         result = divide(num1, num2);
     }
 
-    if(sym == '='){
-        sym = prevSym;
-        operate(sym, num1, num2);
-    }
-    //stringCopy = '0';
-    prevNum = currentNum;
-    currentNum = 0;
     return result;
+}
+
+function clear(){
+    arg1 = 0;
+    arg2 = 0;
+    operator = null;
+    stringCopy = '';
+    document.getElementById("display").innerHTML = '0';
+}
+
+function equals(){
+    let result = 0;
+
+    result = operate(eqOperator, arg1, arg2);
+    document.getElementById("display").innerHTML = String(result);
+    operator = sym;
+    arg1 = arg2;
+    arg2 = result;
+    stringCopy = '';
 }
