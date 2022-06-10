@@ -7,12 +7,27 @@ body{
     align-items: center;
 }
 
+.calc{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    width: 250px;
+    border-radius: 10%;
+    margin-top: 30px;
+}
+
 .entry{
     display: flex;
     align-items: center;
     background-color: whitesmoke;
     height: 40px;
-    width: 500px;
+    width: 300px;
     font-size: 24px;
     font-family: serif;
     margin-top: 30px;
@@ -49,16 +64,15 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: navy;
+    background-color: rgb(199, 113, 8);
     color: white;
     height: 60px;
     width: 40px;
     margin-right: 7px;
-    /*transition-property: all;
-    transition-duration: 0.5s;
-    transition-delay: 0s;*/
+    font-weight: bold;
+    transition: background-color 5ms linear;
 }
 
-/*.key:click{
-    height: 70px;
-}*/
+.key:active {
+    background-color: gold;
+  }
